@@ -1,0 +1,17 @@
+const express=require("express");
+const router=express.Router();
+const userController=require('../Controller/index');
+router.post('/users',userController.postUsers);
+router.post('/users/login',userController.postLogin);
+router.post('/coaches',userController.postCoaches);
+router.post("/coaches/login",userController.postCoachLogin);
+router.get("/coaches/all",userController.getAll);
+router.get("/coaches/:coachId",userController.getCoaches);
+router.get("/users/:userId",userController.getUsers);
+router.post("/users/booking/:userId/:coachId",userController.postAll);
+router.put("/booking/:bookingId",userController.confirmBooking);
+router.delete("/booking/:bookingId",userController.deleteBooking);
+router.get("/coaches/booking/:coachId",userController.getCoach);
+router.get("/users/booking/:userId",userController.getUser);
+router.all("*",userController.invalid);
+module.exports=router;
